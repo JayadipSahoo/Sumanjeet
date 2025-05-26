@@ -1,5 +1,6 @@
 import { Award, BookOpen, Calendar, MapPin, FileText, Languages } from 'lucide-react';
 import { motion } from 'framer-motion';
+import profileImage from '../../assets/Profile.jpg';
 
 const About = () => {
   return (
@@ -35,7 +36,7 @@ const About = () => {
             <div className="relative w-full max-w-sm">
               <div className="absolute -inset-4 border-2 border-[#f47521]/20 rounded-xl -z-10 transform rotate-3"></div>
               <img 
-                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                src={profileImage} 
                 alt="Sumanjeet Behera" 
                 className="rounded-lg shadow-lg w-full h-auto object-cover aspect-[4/5]"
               />
