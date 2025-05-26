@@ -102,7 +102,7 @@ const Experience = () => {
                   <div className="absolute left-4 md:left-1/2 top-0 -translate-x-1/2 w-6 h-6 bg-[#f47521] rounded-full border-4 border-[#0a2a35] z-10"></div>
                   
                   {/* Content */}
-                  <div className={`ml-12 md:ml-0 w-[calc(100%-3rem)] md:w-auto ${index % 2 === 0 ? 'md:pr-16 md:w-[calc(50%-20px)]' : 'md:pl-16 md:w-[calc(50%-20px)]'}`}>
+                  <div className={`ml-12 md:ml-0 w-[calc(100%-3rem)] md:w-auto ${index % 2 === 0 ? 'md:pr-20 md:w-[calc(50%-30px)]' : 'md:pl-20 md:w-[calc(50%-30px)]'}`}>
                     <div className={`bg-white/10 backdrop-blur-sm p-4 sm:p-6 rounded-lg hover:bg-white/15 transition-colors duration-300 ${index % 2 === 1 ? 'md:ml-auto' : ''}`}>
                       <div className="flex items-start">
                         <div className="flex-shrink-0 mr-4">
@@ -132,7 +132,7 @@ const Experience = () => {
                   </div>
                   
                   {/* Empty Space for Alternating Layout */}
-                  <div className="hidden md:block md:w-[calc(50%-20px)]"></div>
+                  <div className="hidden md:block md:w-[calc(50%-30px)]"></div>
                 </motion.div>
               ))}
             </div>
