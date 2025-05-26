@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -19,6 +20,16 @@ const Navbar = () => {
       } else {
         setScrolled(false);
       }
+      
+      // Calculate which section is currently in view
+      const sections = document.querySelectorAll('section[id]');
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.offsetHeight;
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          setActiveSection(section.getAttribute('id'));
+        }
+      });
     };
     
     window.addEventListener('scroll', handleScroll);
@@ -56,7 +67,7 @@ const Navbar = () => {
                 <li key={link.name}>
                   <a 
                     href={link.href}
-                    className="text-white hover:text-[#f47521] transition-colors text-sm uppercase tracking-wider"
+                    className={`transition-colors text-sm uppercase tracking-wider ${activeSection === link.href.substring(1) ? 'text-[#f47521]' : 'text-white hover:text-[#f47521]'}`}
                   >
                     {link.name}
                   </a>
@@ -97,7 +108,7 @@ const Navbar = () => {
                   >
                     <a 
                       href={link.href}
-                      className="text-white hover:text-[#f47521] transition-colors text-lg block py-2"
+                      className={`transition-colors text-lg block py-2 ${activeSection === link.href.substring(1) ? 'text-[#f47521]' : 'text-white hover:text-[#f47521]'}`}
                       onClick={() => setIsOpen(false)}
                     >
                       {link.name}
