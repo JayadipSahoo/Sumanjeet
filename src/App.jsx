@@ -43,7 +43,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
+    <div className="min-h-screen bg-white text-slate-900 overflow-x-hidden">
       <Navbar />
       <main>
         <Hero />

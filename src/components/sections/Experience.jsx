@@ -102,10 +102,10 @@ const Experience = () => {
                   <div className="absolute left-4 md:left-1/2 top-0 -translate-x-1/2 w-6 h-6 bg-[#f47521] rounded-full border-4 border-[#0a2a35] z-10"></div>
                   
                   {/* Content */}
-                  <div className={`ml-12 md:ml-0 ${index % 2 === 0 ? 'md:pr-12 md:w-1/2' : 'md:pl-12 md:w-1/2'}`}>
-                    <div className={`bg-white/10 backdrop-blur-sm p-6 rounded-lg hover:bg-white/15 transition-colors duration-300 ${index % 2 === 1 ? 'md:ml-auto' : ''}`}>
-                      <div className={`flex items-start ${index % 2 === 1 ? 'md:flex-row' : ''}`}>
-                        <div className={`flex-shrink-0 ${index % 2 === 1 ? 'mr-4' : 'mr-4'}`}>
+                  <div className={`ml-12 md:ml-0 w-[calc(100%-3rem)] md:w-auto ${index % 2 === 0 ? 'md:pr-16 md:w-[calc(50%-20px)]' : 'md:pl-16 md:w-[calc(50%-20px)]'}`}>
+                    <div className={`bg-white/10 backdrop-blur-sm p-4 sm:p-6 rounded-lg hover:bg-white/15 transition-colors duration-300 ${index % 2 === 1 ? 'md:ml-auto' : ''}`}>
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 mr-4">
                           {experience.icon}
                         </div>
                         <div className="flex-grow">
@@ -125,14 +125,14 @@ const Experience = () => {
                             </div>
                           </div>
                           
-                          <p className="text-gray-300">{experience.description}</p>
+                          <p className="text-gray-300 text-sm">{experience.description}</p>
                         </div>
                       </div>
                     </div>
                   </div>
                   
                   {/* Empty Space for Alternating Layout */}
-                  <div className="hidden md:block md:w-1/2"></div>
+                  <div className="hidden md:block md:w-[calc(50%-20px)]"></div>
                 </motion.div>
               ))}
             </div>
@@ -154,10 +154,10 @@ const Experience = () => {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/10 backdrop-blur-sm p-6 rounded-lg hover:bg-white/15 transition-colors duration-300"
+                className="bg-white/10 backdrop-blur-sm p-4 sm:p-6 rounded-lg hover:bg-white/15 transition-colors duration-300"
               >
                 <div className="flex items-start">
-                  <div className="flex-shrink-0">
+                  <div className="flex-shrink-0 mr-4">
                     {article.icon}
                   </div>
                   <div>

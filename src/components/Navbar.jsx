@@ -41,9 +41,13 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#home" className="text-xl font-serif font-bold text-white flex items-center">
-            <span className="text-[#f47521]">S</span>umanjeet
+          <a href="#home" className="text-lg sm:text-xl font-serif font-bold text-white flex items-center">
+            <span className="text-[#f47521]">Knowledge</span>&nbsp;Is&nbsp;<span className="text-[#20b286]">Power</span>
+            <div className="flex items-center mb-4">
+             
+            </div>
           </a>
+        
           
           {/* Desktop Navigation */}
           <nav className="hidden md:block">

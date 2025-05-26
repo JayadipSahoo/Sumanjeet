@@ -24,14 +24,8 @@ const Hero = () => {
             transition={{ duration: 0.5 }}
             className="mb-6"
           >
-            <div className="flex items-center mb-4">
-              <span className="h-1 w-6 bg-[#f47521] mr-2"></span>
-              <span className="h-1 w-6 bg-white mr-2"></span>
-              <span className="h-1 w-6 bg-[#20b286] mr-2"></span>
-            </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-4">
-              <span className="text-[#f47521]">Knowledge</span> Is <span className="text-[#20b286]">Power</span>
-            </h1>
+           
+           
           </motion.div>
           
           <motion.div
