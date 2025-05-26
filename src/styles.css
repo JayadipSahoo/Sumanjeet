@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #0a2a35;
+  --secondary: #64748b;
+  --accent: #f47521;
+  --tertiary: #20b286;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans text-base text-gray-700 bg-white;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+    font-family: 'Merriweather', serif;
+  }
+}
+
+@layer components {
+  .active-nav-item button {
+    color: #f97316;
+    background-color: rgba(249, 115, 22, 0.1);
+  }
+
+  /* Indian flag theme helper classes */
+  .gradient-saffron {
+    @apply bg-gradient-to-r from-orange-500 to-orange-400;
+  }
+  
+  .gradient-green {
+    @apply bg-gradient-to-r from-green-600 to-green-500;
+  }
+  
+  .indian-flag-border {
+    @apply border-t-orange-500 border-b-green-600;
+  }
+
+  .container {
+    @apply mx-auto px-4 md:px-6;
+  }
+
+  .section-title {
+    @apply text-2xl sm:text-3xl md:text-4xl font-bold text-[#0a2a35] mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-lg sm:text-xl text-gray-600 mb-8;
+  }
+  
+  .btn {
+    @apply px-6 py-2 rounded-md font-medium transition-colors;
+  }
+  
+  .btn-primary {
+    @apply bg-[#f47521] hover:bg-[#e06010] text-white;
+  }
+  
+  .btn-secondary {
+    @apply bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/20;
+  }
+  
+  .icon-primary {
+    @apply text-[#f47521];
+  }
+  
+  .badge {
+    @apply bg-[#f47521]/10 text-[#f47521] text-xs px-3 py-1 rounded-full;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} 
+ 
+ 
+ 
