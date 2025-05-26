@@ -5,10 +5,14 @@ import { motion } from 'framer-motion';
 const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center bg-[#0a2a35] text-white relative overflow-hidden">
-      {/* Background Elements */}
+      {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-20 left-20 w-32 h-32 bg-[#f47521]/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-64 h-64 bg-[#20b286]/10 rounded-full blur-3xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a2a35]/95 to-[#0a2a35]/80 z-10" />
+        <img
+          src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+          alt="Law background"
+          className="w-full h-full object-cover"
+        />
       </div>
       
       {/* Content */}
@@ -67,7 +71,7 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Navigation Dots */}
+      {/* Navigation Dots - Only visible on desktop */}
       <div className="fixed right-5 top-1/2 transform -translate-y-1/2 z-50 hidden md:block">
         <div className="flex flex-col items-center space-y-4">
           <a href="#home" className="w-3 h-3 rounded-full bg-[#f47521]"></a>
