@@ -38,7 +38,7 @@ const Hero = () => {
             </h2>
             
             <h3 className="text-xl sm:text-2xl md:text-3xl font-light mb-6">
-              Law Student || Madhusudan Law College
+              Law Student || Madhusudan Law University
             </h3>
             
             <p className="text-gray-300 text-base sm:text-lg max-w-2xl mb-8">

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Briefcase, Calendar, MapPin, FileText } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, FileText, ExternalLink } from 'lucide-react';
 
 const Experience = () => {
   const experiences = [
@@ -33,22 +33,26 @@ const Experience = () => {
     {
       title: "Indian Criminal laws: Still in dearth",
       description: "Analyzed the gaps and shortcomings in the current Indian criminal law framework and proposed necessary reforms.",
-      icon: <FileText className="text-[#f47521] w-8 h-8 mb-4" />
+      icon: <FileText className="text-[#f47521] w-8 h-8 mb-4" />,
+      url: "https://medium.com/@sumanjeetbehera/indian-criminal-laws-still-in-dearth-b751b2c907f5"
     },
     {
       title: "Crime vs Criminal",
       description: "Explored the philosophical and legal distinctions between the act of crime and the person committing it, examining implications for the justice system.",
-      icon: <FileText className="text-[#f47521] w-8 h-8 mb-4" />
+      icon: <FileText className="text-[#f47521] w-8 h-8 mb-4" />,
+      url: "https://medium.com/@sumanjeetbehera/crime-vs-criminal-0475bc7b597b"
     },
     {
       title: "Martial Law vs National Emergency",
       description: "Comparative analysis of martial law and national emergency provisions, their constitutional basis, and impacts on civil liberties.",
-      icon: <FileText className="text-[#f47521] w-8 h-8 mb-4" />
+      icon: <FileText className="text-[#f47521] w-8 h-8 mb-4" />,
+      url: "https://medium.com/@sumanjeetbehera/martial-law-vs-national-emergency-d8398337128e"
     },
     {
       title: "Split Verdict: \"Judgement behind Justice\"",
       description: "Examined the implications and reasoning behind split verdicts in landmark cases and their impact on legal precedent.",
-      icon: <FileText className="text-[#f47521] w-8 h-8 mb-4" />
+      icon: <FileText className="text-[#f47521] w-8 h-8 mb-4" />,
+      url: "https://medium.com/@sumanjeetbehera/split-verdict-judgement-behind-justice-b1ff5b05f1fc"
     }
   ];
 
@@ -161,7 +165,17 @@ const Experience = () => {
                     {article.icon}
                   </div>
                   <div>
-                    <h4 className="text-lg font-medium text-white mb-2">{article.title}</h4>
+                    <h4 className="text-lg font-medium text-white mb-2 group">
+                      <a 
+                        href={article.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center hover:text-[#f47521] transition-colors"
+                      >
+                        {article.title}
+                        <ExternalLink className="ml-1.5 w-4 h-4 opacity-70 group-hover:opacity-100" />
+                      </a>
+                    </h4>
                     <p className="text-gray-300 text-sm">{article.description}</p>
                   </div>
                 </div>
