@@ -1,27 +1,85 @@
 import { motion } from 'framer-motion';
-import { Award, FileText, Users, BookOpen } from 'lucide-react';
+import { Award, FileText, Users, BookOpen, Gavel, ExternalLink } from 'lucide-react';
 
 const Achievements = () => {
   const achievements = [
     {
       icon: <Award className="text-[#f47521] w-8 h-8 mb-4" />,
-      title: "Moot Court Champion",
-      description: "Winner at Surana and Surana National Criminal Law Moot Court Competition, demonstrating exceptional legal research and advocacy skills."
+      title: "Awarded by Minister of State",
+      description: "Awarded by Minister of State with Independent Charge for Odia Language, Literature and Culture of Odisha Shri Suryabanshi Suraj and Honble Member of Odisha Legislative Assembly Souvik Biswal as Best Student, Madhusudan Law University, 2025."
     },
     {
-      icon: <Award className="text-[#f47521] w-8 h-8 mb-4" />,
-      title: "Family Law Competition",
-      description: "Winner at Surana and Surana National Family Law Moot Court Competition, showcasing expertise in matrimonial and family legal matters."
+      icon: <Gavel className="text-[#f47521] w-8 h-8 mb-4" />,
+      title: "Moot Court Competitions",
+      description: <ul className="list-disc pl-4 space-y-1">
+        <li>Winner at First MLU Intra Moot Court Competition</li>
+        <li>Winner at Surana and Surana National Criminal Law Moot Court Competition</li>
+        <li>Winner at Surana and Surana National Family Law Moot Court Competition</li>
+        <li>Participated in Viswanath Pasayat National Moot Court Competition at Birla Global University, Bhubaneswar</li>
+      </ul>
+    },
+    {
+      icon: <Users className="text-[#f47521] w-8 h-8 mb-4" />,
+      title: "Mediation Competition",
+      description: "Participated in First State Mediation Competition at Birla Global University, Bhubaneswar."
     },
     {
       icon: <FileText className="text-[#f47521] w-8 h-8 mb-4" />,
       title: "Constitutional Law Papers",
-      description: "Presented papers on Constitutional Issues at BGU, Bhubaneswar and XIM University, Bhubaneswar, contributing to legal scholarship."
+      description: <ul className="list-disc pl-4 space-y-1">
+        <li>Presented paper on Constitutional Issues at BGU, Bhubaneswar</li>
+        <li>Presented paper on Constitutional Issues at XIM University, Bhubaneswar</li>
+      </ul>
     },
     {
       icon: <BookOpen className="text-[#f47521] w-8 h-8 mb-4" />,
       title: "Legal Publications",
-      description: "Published articles on critical legal topics including 'Indian Criminal laws: Still in dearth', 'Crime vs Criminal', and 'Split Verdict: Judgement behind Justice'."
+      description: <ul className="list-disc pl-4 space-y-1">
+        <li>
+          <a 
+            href="https://medium.com/@sumanjeetbehera/indian-criminal-laws-still-in-dearth-b751b2c907f5" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-[#0a2a35] hover:text-[#f47521] transition-colors flex items-center"
+          >
+            Indian Criminal laws: Still in dearth
+            <ExternalLink className="ml-1 w-3 h-3" />
+          </a>
+        </li>
+        <li>
+          <a 
+            href="https://medium.com/@sumanjeetbehera/crime-vs-criminal-0475bc7b597b" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-[#0a2a35] hover:text-[#f47521] transition-colors flex items-center"
+          >
+            Crime vs Criminal
+            <ExternalLink className="ml-1 w-3 h-3" />
+          </a>
+        </li>
+        <li>
+          <a 
+            href="https://medium.com/@sumanjeetbehera/split-verdict-judgement-behind-justice-b1ff5b05f1fc" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-[#0a2a35] hover:text-[#f47521] transition-colors flex items-center"
+          >
+            Split Verdict: Judgement behind Justice
+            <ExternalLink className="ml-1 w-3 h-3" />
+          </a>
+        </li>
+        <li>
+          <a 
+            href="https://medium.com/@sumanjeetbehera/martial-law-vs-national-emergency-d8398337128e" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-[#0a2a35] hover:text-[#f47521] transition-colors flex items-center"
+          >
+            Martial Law vs National Emergency
+            <ExternalLink className="ml-1 w-3 h-3" />
+          </a>
+        </li>
+      </ul>
     },
     {
       icon: <Users className="text-[#f47521] w-8 h-8 mb-4" />,

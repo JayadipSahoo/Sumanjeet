@@ -8,7 +8,7 @@ const Experience = () => {
       organization: "District Legal Services Authority",
       location: "Cuttack, Odisha",
       description: "Completed internship at District Legal Services Authority (at various Courts and Departments), Cuttack. Assisted in legal aid initiatives, participated in client consultations, and gained exposure to various legal proceedings at the district level.",
-      duration: "2023",
+      duration: "2024",
       icon: <Briefcase className="text-[#f47521] w-8 h-8" />
     },
     {
@@ -16,7 +16,7 @@ const Experience = () => {
       organization: "Additional Government Advocate",
       location: "Orissa High Court, Cuttack",
       description: "Completed internship under Additional Government Advocate, Orissa High Court, Cuttack. Worked on government litigation matters, conducted legal research, prepared case briefs, and observed court proceedings.",
-      duration: "2022",
+      duration: "2023",
       icon: <Briefcase className="text-[#f47521] w-8 h-8" />
     },
     {
