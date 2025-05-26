@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Home, User, BookOpen, Award, Briefcase, MessageSquare } from 'lucide-react';
+import { Home, User, Award, Briefcase, MessageSquare } from 'lucide-react';
 
 const BottomNav = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -27,7 +27,6 @@ const BottomNav = () => {
   const navItems = [
     { id: 'home', icon: <Home size={18} />, label: 'Home' },
     { id: 'about', icon: <User size={18} />, label: 'About' },
-    { id: 'skills', icon: <BookOpen size={18} />, label: 'Skills' },
     { id: 'achievements', icon: <Award size={18} />, label: 'Achievements' },
     { id: 'experience', icon: <Briefcase size={18} />, label: 'Experience' },
     { id: 'contact', icon: <MessageSquare size={18} />, label: 'Contact' }
@@ -35,7 +34,7 @@ const BottomNav = () => {
 
   return (
     <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-[95%] max-w-md bg-white/90 backdrop-blur-md rounded-full shadow-lg px-2 py-2 z-50 md:hidden">
-      <div className="grid grid-cols-6 gap-1">
+      <div className="grid grid-cols-5 gap-1">
         {navItems.map((item) => (
           <a 
             key={item.id}
