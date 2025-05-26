@@ -1,37 +1,37 @@
 import { motion } from 'framer-motion';
-import { Code, Book, Scale, Gavel, FileText } from 'lucide-react';
+import { Gavel, BookOpen, FileText, Users, Scale, MessageSquare } from 'lucide-react';
 
 const Skills = () => {
   const skills = [
     {
-      icon: <Scale className="text-[#f47521] w-8 h-8 mb-4" />,
-      title: 'Constitutional Law',
-      description: 'Specializing in constitutional interpretation, fundamental rights, and public interest litigation.'
-    },
-    {
       icon: <Gavel className="text-[#f47521] w-8 h-8 mb-4" />,
-      title: 'Criminal Law',
-      description: 'Experience in criminal procedure, evidence law, and defense strategies in criminal cases.'
+      title: "Legal Research",
+      description: "Proficient in conducting thorough legal research using various databases and resources to build strong legal arguments."
     },
     {
-      icon: <Book className="text-[#f47521] w-8 h-8 mb-4" />,
-      title: 'Legal Research',
-      description: 'Thorough research skills with attention to detail and comprehensive analysis of case law.'
+      icon: <BookOpen className="text-[#f47521] w-8 h-8 mb-4" />,
+      title: "Case Analysis",
+      description: "Skilled in analyzing complex legal cases, identifying key issues, and developing effective legal strategies."
     },
     {
       icon: <FileText className="text-[#f47521] w-8 h-8 mb-4" />,
-      title: 'Legal Writing',
-      description: 'Crafting persuasive legal documents, memos, briefs, and academic papers on various legal topics.'
+      title: "Legal Writing",
+      description: "Excellent legal writing skills with experience in drafting legal documents, memoranda, and scholarly articles."
     },
     {
-      icon: <Code className="text-[#f47521] w-8 h-8 mb-4" />,
-      title: 'Mooting',
-      description: 'Award-winning experience in national moot court competitions with strong oral advocacy skills.'
+      icon: <MessageSquare className="text-[#f47521] w-8 h-8 mb-4" />,
+      title: "Advocacy",
+      description: "Strong oral advocacy skills developed through moot court competitions and practical legal experience."
     },
     {
       icon: <Scale className="text-[#f47521] w-8 h-8 mb-4" />,
-      title: 'Family Law',
-      description: 'Knowledge of matrimonial laws, custody matters, and family dispute resolution mechanisms.'
+      title: "Constitutional Law",
+      description: "Specialized knowledge in constitutional law with focus on fundamental rights and constitutional remedies."
+    },
+    {
+      icon: <Users className="text-[#f47521] w-8 h-8 mb-4" />,
+      title: "Client Counseling",
+      description: "Experience in client consultations, understanding client needs, and providing appropriate legal advice."
     }
   ];
 
@@ -55,8 +55,7 @@ const Skills = () => {
           </motion.h2>
           <div className="w-16 sm:w-20 h-1 bg-[#f47521] rounded-full"></div>
           <p className="text-center text-gray-300 mt-6 max-w-2xl">
-            Specialized legal skills developed through academic study, internships, and practical experience
-            in various areas of law and legal practice.
+            Professional legal skills developed through education, internships, and practical experience.
           </p>
         </div>
         
@@ -64,8 +63,8 @@ const Skills = () => {
           {skills.map((skill, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-white/10 backdrop-blur-sm p-6 rounded-lg hover:bg-white/15 transition-colors duration-300"

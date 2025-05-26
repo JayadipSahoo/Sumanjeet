@@ -27,8 +27,8 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
           {/* Image Column */}
           <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
             className="flex justify-center order-2 md:order-1"
@@ -45,8 +45,8 @@ const About = () => {
           
           {/* Content Column */}
           <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
             className="order-1 md:order-2"
@@ -74,9 +74,9 @@ const About = () => {
                 <Calendar className="text-[#f47521] mr-2 sm:mr-3 mt-1 flex-shrink-0" size={18} />
                 <div>
                   <h4 className="font-medium text-[#0a2a35] text-sm sm:text-base">Experience</h4>
-                  <p className="text-gray-600 text-xs sm:text-sm">Completed internship at District Legal Services Authority, Cuttack</p>
-                  <p className="text-gray-600 text-xs sm:text-sm">Completed internship under Additional Government Advocate at Orissa High Court</p>
-                  <p className="text-gray-600 text-xs sm:text-sm">Completed internship under Senior Criminal Advocate at Orissa High Court</p>
+                  <p className="text-gray-600 text-xs sm:text-sm">Completed internship at District Legal Services Authority (at various Courts and Departments), Cuttack</p>
+                  <p className="text-gray-600 text-xs sm:text-sm">Completed internship under Additional Government Advocate, Orissa High Court, Cuttack</p>
+                  <p className="text-gray-600 text-xs sm:text-sm">Completed internship under Senior Criminal Advocate, Orissa High Court, Cuttack</p>
                 </div>
               </div>
               
