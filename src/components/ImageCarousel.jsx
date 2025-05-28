@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, memo } from 'react';
 import { motion } from 'framer-motion';
 
 // Import all images
@@ -12,25 +12,57 @@ import Image7 from '../assets/carousel/Image7.jpg';
 import Image8 from '../assets/carousel/Image8.jpg';
 import Image9 from '../assets/carousel/Image9.jpg';
 
+// Memoized carousel item to prevent unnecessary re-renders
+const CarouselItem = memo(({ image, index, imagesLength }) => (
+  <div
+    className="flex-shrink-0 w-56 sm:w-72 md:w-80 h-40 sm:h-48 md:h-56 rounded-lg overflow-hidden shadow-md relative group"
+    style={{ willChange: 'transform' }} // Optimize for animations
+  >
+    <img 
+      src={image} 
+      alt={`Gallery image ${index % imagesLength + 1}`} 
+      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+      loading="lazy" // Lazy load images for better performance
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+  </div>
+));
+
 const ImageCarousel = () => {
   const images = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8, Image9];
   const [scrollPosition, setScrollPosition] = useState(0);
-
-  // Create duplicated images for infinite scroll effect
-  const duplicatedImages = [...images, ...images];
+  const animationRef = useRef(null);
+  
+  // Use a limited number of duplicated images to reduce DOM size
+  const duplicatedImages = [...images, ...images.slice(0, 3)];
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setScrollPosition((prevPosition) => {
-        // When we've scrolled through the original set, reset to beginning
-        if (prevPosition >= 100) {
-          return 0;
-        }
-        return prevPosition + 0.08; // Reduced speed (from 0.2 to 0.08)
-      });
-    }, 20); // Lower interval for smoother animation
-
-    return () => clearInterval(intervalId);
+    let lastTimestamp = 0;
+    const animate = (timestamp) => {
+      if (!lastTimestamp) lastTimestamp = timestamp;
+      const elapsed = timestamp - lastTimestamp;
+      
+      // Only update position every 16ms (approx 60fps) to optimize performance
+      if (elapsed > 16) {
+        lastTimestamp = timestamp;
+        setScrollPosition(prevPosition => {
+          if (prevPosition >= 100) {
+            return 0;
+          }
+          return prevPosition + 0.12; // Slightly faster scroll speed
+        });
+      }
+      
+      animationRef.current = requestAnimationFrame(animate);
+    };
+    
+    animationRef.current = requestAnimationFrame(animate);
+    
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
   }, []);
 
   return (
@@ -55,7 +87,7 @@ const ImageCarousel = () => {
         </div>
       </div>
       
-      <div className="relative overflow-hidden py-4">
+      <div className="relative overflow-hidden py-4" style={{ willChange: 'contents' }}>
         {/* Left gradient fade effect */}
         <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 z-10 bg-gradient-to-r from-gray-50 to-transparent"></div>
         
@@ -63,21 +95,17 @@ const ImageCarousel = () => {
           className="flex gap-6 py-6 px-4"
           style={{
             x: `-${scrollPosition}%`,
-            transition: 'transform linear',
+            transition: 'none', // Remove transition for better performance
+            willChange: 'transform', // Hint to browser to optimize
           }}
         >
           {duplicatedImages.map((image, index) => (
-            <div
+            <CarouselItem 
               key={index}
-              className="flex-shrink-0 w-56 sm:w-72 md:w-80 h-40 sm:h-48 md:h-56 rounded-lg overflow-hidden shadow-md relative group"
-            >
-              <img 
-                src={image} 
-                alt={`Gallery image ${index % images.length + 1}`} 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
+              image={image}
+              index={index}
+              imagesLength={images.length}
+            />
           ))}
         </motion.div>
         
