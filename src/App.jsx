@@ -12,6 +12,7 @@ import Skills from './components/sections/Skills';
 import Achievements from './components/sections/Achievements';
 import Experience from './components/sections/Experience';
 import Contact from './components/sections/Contact';
+import ImageCarousel from './components/ImageCarousel';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -50,6 +51,7 @@ function App() {
         <About />
         <Skills />
         <Achievements />
+        <ImageCarousel />
         <Experience />
         <Contact />
       </main>
