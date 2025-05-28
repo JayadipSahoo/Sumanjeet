@@ -26,7 +26,7 @@ const ImageCarousel = () => {
         if (prevPosition >= 100) {
           return 0;
         }
-        return prevPosition + 0.2; // Adjust speed by changing this value (lower = slower)
+        return prevPosition + 0.08; // Reduced speed (from 0.2 to 0.08)
       });
     }, 20); // Lower interval for smoother animation
 
@@ -55,12 +55,12 @@ const ImageCarousel = () => {
         </div>
       </div>
       
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden py-4">
         {/* Left gradient fade effect */}
         <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 z-10 bg-gradient-to-r from-gray-50 to-transparent"></div>
         
         <motion.div 
-          className="flex gap-4 py-6 px-4"
+          className="flex gap-6 py-6 px-4"
           style={{
             x: `-${scrollPosition}%`,
             transition: 'transform linear',
@@ -69,7 +69,7 @@ const ImageCarousel = () => {
           {duplicatedImages.map((image, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-48 sm:w-60 md:w-72 h-32 sm:h-40 md:h-48 rounded-lg overflow-hidden shadow-md relative group"
+              className="flex-shrink-0 w-56 sm:w-72 md:w-80 h-40 sm:h-48 md:h-56 rounded-lg overflow-hidden shadow-md relative group"
             >
               <img 
                 src={image} 
