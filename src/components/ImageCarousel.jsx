@@ -15,7 +15,7 @@ import Image9 from '../assets/carousel/Image9.jpg';
 // Memoized carousel item to prevent unnecessary re-renders
 const CarouselItem = memo(({ image, index, imagesLength }) => (
   <div
-    className="flex-shrink-0 w-56 sm:w-72 md:w-80 h-40 sm:h-48 md:h-56 rounded-lg overflow-hidden shadow-md relative group"
+    className="flex-shrink-0 w-[calc(33.333%-16px)] sm:w-72 md:w-80 h-40 sm:h-48 md:h-56 rounded-lg overflow-hidden shadow-md relative group"
     style={{ willChange: 'transform' }} // Optimize for animations
   >
     <img 
@@ -33,8 +33,8 @@ const ImageCarousel = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const animationRef = useRef(null);
   
-  // Use a limited number of duplicated images to reduce DOM size
-  const duplicatedImages = [...images, ...images.slice(0, 3)];
+  // Create a proper infinite loop by duplicating images
+  const duplicatedImages = [...images, ...images, ...images];
 
   useEffect(() => {
     let lastTimestamp = 0;
@@ -46,10 +46,12 @@ const ImageCarousel = () => {
       if (elapsed > 16) {
         lastTimestamp = timestamp;
         setScrollPosition(prevPosition => {
+          // When scrolled to one-third (end of first set), reset to beginning
+          // This creates a perfect loop illusion
           if (prevPosition >= 100) {
             return 0;
           }
-          return prevPosition + 0.12; // Slightly faster scroll speed
+          return prevPosition + 0.15; // Slightly faster scroll speed
         });
       }
       
@@ -64,6 +66,16 @@ const ImageCarousel = () => {
       }
     };
   }, []);
+
+  // Manually handle swipe gestures for mobile
+  const handleTouchStart = useRef({ x: 0 });
+  const handleTouchMove = (e) => {
+    const touchDelta = handleTouchStart.current.x - e.touches[0].clientX;
+    if (Math.abs(touchDelta) > 5) {
+      // Prevent default scrolling when swiping the carousel
+      e.preventDefault();
+    }
+  };
 
   return (
     <div className="py-10 bg-gradient-to-r from-gray-50 to-gray-100 overflow-hidden">
@@ -87,7 +99,12 @@ const ImageCarousel = () => {
         </div>
       </div>
       
-      <div className="relative overflow-hidden py-4" style={{ willChange: 'contents' }}>
+      <div 
+        className="relative overflow-hidden py-4" 
+        style={{ willChange: 'contents' }}
+        onTouchStart={(e) => handleTouchStart.current = { x: e.touches[0].clientX }}
+        onTouchMove={handleTouchMove}
+      >
         {/* Left gradient fade effect */}
         <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 z-10 bg-gradient-to-r from-gray-50 to-transparent"></div>
         

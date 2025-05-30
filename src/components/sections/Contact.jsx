@@ -1,13 +1,20 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
+  const form = useRef();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
+    user_name: '',
+    user_email: '',
     subject: '',
     message: ''
+  });
+  const [status, setStatus] = useState({
+    submitted: false,
+    submitting: false,
+    info: { error: false, msg: null }
   });
   
   const handleChange = (e) => {
@@ -17,17 +24,41 @@ const Contact = () => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Form submission logic would go here
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
+    setStatus({
+      submitted: false,
+      submitting: true,
+      info: { error: false, msg: null }
     });
-    // Show success message
-    alert('Thank you for your message. I will get back to you soon!');
+
+    // EmailJS service ID, template ID, and user ID should be set up in your EmailJS account
+    // Replace these with your actual values
+    const serviceId = 'service_xxxxxxx'; // Replace with your EmailJS service ID
+    const templateId = 'template_xxxxxxx'; // Replace with your EmailJS template ID
+    const userId = 'xxxxxxxxxxxxxxxx'; // Replace with your EmailJS user ID
+
+    emailjs
+      .sendForm(serviceId, templateId, form.current, userId)
+      .then((result) => {
+        setStatus({
+          submitted: true,
+          submitting: false,
+          info: { error: false, msg: 'Message sent successfully!' }
+        });
+        setFormData({
+          user_name: '',
+          user_email: '',
+          subject: '',
+          message: ''
+        });
+      })
+      .catch((error) => {
+        setStatus({
+          submitted: false,
+          submitting: false,
+          info: { error: true, msg: 'An error occurred. Please try again later.' }
+        });
+        console.error('EmailJS error:', error);
+      });
   };
   
   return (
@@ -131,15 +162,15 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form ref={form} onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                  <label htmlFor="user_name" className="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
                   <input
                     type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
+                    id="user_name"
+                    name="user_name"
+                    value={formData.user_name}
                     onChange={handleChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f47521] focus:border-transparent"
                     required
@@ -147,12 +178,12 @@ const Contact = () => {
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
+                  <label htmlFor="user_email" className="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
                   <input
                     type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
+                    id="user_email"
+                    name="user_email"
+                    value={formData.user_email}
                     onChange={handleChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f47521] focus:border-transparent"
                     required
@@ -186,11 +217,29 @@ const Contact = () => {
                 ></textarea>
               </div>
               
+              {status.info.error && (
+                <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded">
+                  <p>{status.info.msg}</p>
+                </div>
+              )}
+              
+              {status.submitted && !status.info.error && (
+                <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded">
+                  <p>{status.info.msg}</p>
+                </div>
+              )}
+              
               <button
                 type="submit"
-                className="inline-flex items-center px-6 py-3 bg-[#0a2a35] text-white rounded-md hover:bg-[#0a2a35]/90 transition-colors duration-300"
+                disabled={status.submitting}
+                className={`inline-flex items-center px-6 py-3 bg-[#0a2a35] text-white rounded-md hover:bg-[#0a2a35]/90 transition-colors duration-300 ${
+                  status.submitting ? 'opacity-70 cursor-not-allowed' : ''
+                }`}
               >
-                Send Message <Send className="ml-2 h-5 w-5" />
+                {status.submitting ? 
+                  'Sending...' : 
+                  <>Send Message <Send className="ml-2 h-5 w-5" /></>
+                }
               </button>
             </form>
           </motion.div>
